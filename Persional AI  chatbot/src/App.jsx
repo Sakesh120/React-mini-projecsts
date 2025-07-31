@@ -10,6 +10,7 @@ const App = () => {
   const [selectedHistory, setSelectedHistory] = useState('')
   const scrollToAns = useRef()
   const [loader, setLoader] = useState(false)
+  // const mode=document.getElementById("mode")
 
 
   const askQuestion = async () => {
@@ -78,9 +79,19 @@ const App = () => {
   // Dark mode 
   const [darkMode,setDarkMode]=useState('dark')
 
+  useEffect(() => {
+    console.log(darkMode)
+    if(darkMode=='dark'){
+      document.documentElement.classList.add('dark')
+    }else{
+      document.documentElement.classList.remove('dark')
+    }
+  },[darkMode])
+
   return (
+    <div className={darkMode=='dark'?'dark':'light'}>
     <div className='grid grid-cols-5 h-screen text-center'>
-          <select className='fixed text-white right-20 p-3 top-3 shadow shadow-gray-200 rounded-2xl'>
+          <select onChange={(event)=>setDarkMode(event.target.value)} className='fixed dark:text-white right-20 p-3 top-3 font-bold shadow dark:shadow-gray-200 rounded-2xl text-gray-700 shadow-gray-600 cursor-pointer'>
         <option value="dark">Dark</option>
         <option value="light">Light</option>
       </select>
@@ -100,7 +111,7 @@ const App = () => {
 
 
         <div ref={scrollToAns} className='container h-130 overflow-y-scroll '>
-          <div className='text-zinc-300'>
+          <div className='dark:text-zinc-300 text-zinc-800'>
             <ul>
               {
                 result.map((item, index) => (
@@ -111,11 +122,12 @@ const App = () => {
             </ul>
           </div>
         </div>
-        <div className=' w-1/2 text-white m-auto rounded-3xl border border-zinc-700 flex p-1 h-16  bg-zinc-800'>
+        <div className=' w-1/2 dark:text-white m-auto text-gray-700 rounded-3xl border border-zinc-700 flex p-1 h-16  dark:bg-zinc-800 bg-red-100'>
           <input type="text" value={quetion} onKeyDown={isEnter} onChange={(event) => setQuestion(event.target.value)} className='w-full h-full p-3 outline-none' placeholder='Ask me Anything' id='Que' />
           <button onClick={askQuestion} className='cursor-pointer mr-2'>Ask</button>
         </div>
       </div>
+    </div>
     </div>
   )
 }

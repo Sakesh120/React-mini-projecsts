@@ -21,4 +21,3 @@ This project is a Personal AI Chatbot built with React and Vite. It provides an 
 
 Feel free to explore and modify the chatbot to suit your needs!
 
-T
