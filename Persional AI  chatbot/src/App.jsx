@@ -10,7 +10,6 @@ const App = () => {
   const [selectedHistory, setSelectedHistory] = useState('')
   const scrollToAns = useRef()
   const [loader, setLoader] = useState(false)
-  // const mode=document.getElementById("mode")
 
 
   const askQuestion = async () => {
