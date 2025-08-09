@@ -1,14 +1,13 @@
+import { Canvas } from '@react-three/fiber'
 import React from 'react'
-import Header from './header'
+import "./style.css";
+import { OrbitControls } from '@react-three/drei';
+import MacContainer from './MacContainer';
 const App = () => {
-  return (
-    <div>
-      <Header />
-      <h1 className="text-[20px] text-red-600 bg-yellow-500">
-        Hello this is vite + React!
-      </h1>
-    </div>
-  )
+  return <Canvas>
+    <OrbitControls/>
+    <MacContainer/>
+  </Canvas>
 }
 
 export default App
