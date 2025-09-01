@@ -1,11 +1,13 @@
-import Login from "./components/Auth/Login"
+import Login from "./components/Auth/Login";
+import EmployeeDashbord from "./components/Dashbord/EmployeeDashbord";
 
 const App = () => {
   return (
     <>
-      <Login/>
+      {/* <Login/> */}
+      <EmployeeDashbord />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
