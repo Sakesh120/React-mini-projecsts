@@ -48,7 +48,7 @@ const CreateTask = () => {
             className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white"
           ></textarea>
         </div>
-        <button className="w-full bg-green-500 mt-10 rounded-[5px] p-2 shadow shadow-gray-500 cursor-pointer hover:w-[80vw] transition-[3s] mx-auto ">
+        <button className="w-full bg-green-500 mt-10 rounded-[5px] p-2 shadow shadow-gray-500 cursor-pointer hover:bg-green-600 transition-[3s] mx-auto ">
           Create Task
         </button>
       </form>
