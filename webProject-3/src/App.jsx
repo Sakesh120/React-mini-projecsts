@@ -7,6 +7,9 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext);
+  console.log(authData.employees);
+
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
       console.log("this is admin");
@@ -20,9 +23,6 @@ const App = () => {
       alert("Invalied Credencials");
     }
   };
-
-  const data = useContext(AuthContext);
-  console.log(data);
 
   return (
     <>
