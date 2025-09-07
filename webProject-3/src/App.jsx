@@ -7,20 +7,39 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
-  console.log(authData.employees);
+
+  // Uncomment and fix useEffect if needed
+  // useEffect(() => {
+  //   if (authData) {
+  //     const loggedInUser = localStorage.getItem("loggedInUser");
+  //     if (loggedInUser) {
+  //       setUser(JSON.parse(loggedInUser).role);
+  //     }
+  //   }
+  // }, [authData]);
 
   const handleLogin = (email, password) => {
-    if (email == "admin@me.com" && password == "123") {
-      console.log("this is admin");
+    if (email === "admin@me.com" && password === "123") {
       setUser("admin");
-      console.log(user);
-    } else if (email == "user@me.com" && password == "456") {
-      console.log("this is User");
-      setUser("employee");
-      console.log(user);
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    } else if (authData?.employees) {
+      const employee = authData.employees.find(
+        (e) => email === e.email && e.password === password
+      );
+      if (employee) {
+        setUser("employee");
+        setLoggedInUserData(employee);
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify({ role: "employee" })
+        );
+      } else {
+        alert("Invalid Credentials");
+      }
     } else {
-      alert("Invalied Credencials");
+      alert("Invalid Credentials");
     }
   };
 
@@ -28,12 +47,11 @@ const App = () => {
     <>
       {!user ? (
         <Login handleLogin={handleLogin} />
-      ) : user == "admin" ? (
+      ) : user === "admin" ? (
         <AdminDashbord />
-      ) : (
-        <EmployeeDashbord />
-      )}
-      {/* {user == "admin" ? <AdminDashbord /> : <EmployeeDashbord />} */}
+      ) : user === "employee" ? (
+        <EmployeeDashbord data={loggedInUserData} />
+      ) : null}
     </>
   );
 };
