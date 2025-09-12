@@ -1,77 +1,26 @@
 import React from "react";
+import AcceptTask from "./AcceptTask";
+import NewTask from "./NewTask";
+import CompleteTask from "./CompleteTask";
+import FailedTask from "./FailedTask";
 
-const TaskList = () => {
+const TaskList = ({ data }) => {
+  if (!data || !data.tasks) {
+    return null; // Or show a loading spinner/message
+  }
   return (
     <div
       id="tastlist"
-      className="h-[55%] overflow-x-auto lg:py-5 py-2 w-full lg:mt-10 mt-7 grid lg:grid-cols-2  sm:grid-cols-2 lg:flex  items-center justify-center  sm:mx-[6vw]  lg:mx-auto gap-5 flex-wrap lg:flex-nowrap lg:justify-start"
+      className="h-[55%] overflow-x-auto lg:py-5 py-2 w-full lg:mt-10 mt-7 grid lg:grid-cols-2  mx-auto sm:grid-cols-2 lg:flex  items-center justify-center  sm:mx-[6vw]  lg:mx-auto gap-5 flex-wrap lg:flex-nowrap lg:justify-start"
     >
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-green-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-blue-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-yellow-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-gray-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-green-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
-      <div className="flex-shrink-0 h-full lg:w-[300px] w-[200px] p-5 bg-amber-400 rounded-xl">
-        <div className="flex justify-between items-center ">
-          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-          <h4 className="text-sm">3 Sept 2025</h4>
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold">Make a web-Project</h2>
-        <p className="text-sm text-gray-400 mt-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-          culpa incidunt adipisci numquam exercitationem provident?
-        </p>
-      </div>
+      {data.tasks.map((elem, idx) => (
+        <React.Fragment key={idx}>
+          {elem.active && <AcceptTask data={elem} />}
+          {elem.newTask && <NewTask data={elem} />}
+          {elem.completed && <CompleteTask data={elem} />}
+          {elem.failed && <FailedTask data={elem} />}
+        </React.Fragment>
+      ))}
     </div>
   );
 };
