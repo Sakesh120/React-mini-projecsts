@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Alltask = () => {
+  const authData = useContext(AuthContext);
+  console.log(authData.employees);
   return (
-    <div className="bg-[#1c1c1c] p-5 mt-5 rounded flex flex-col gap-2 h-48 overflow-auto ">
-      <div className="bg-red-400 py-2 px-4 flex justify-between rounded">
-        <h2>Sakesh</h2>
-        <h3>Make a UI design</h3>
-        <h5>Status</h5>
+    <div className="bg-[#1c1c1c] p-5 mt-5 rounded flex flex-col gap-1  ">
+      <div className="bg-red-500 py-2 px-4 flex justify-between rounded">
+        <h2 className="w-1/5 font-medium text-center">Employee Name</h2>
+        <h3 className="w-1/5 font-medium text-center">New Task</h3>
+        <h5 className="w-1/5 font-medium text-center">Active Task</h5>
+        <h5 className="w-1/5 font-medium text-center">Completed</h5>
+        <h5 className="w-1/5 font-medium text-center">Failed</h5>
       </div>
-      <div className="bg-blue-400 py-2 px-4 flex justify-between rounded">
-        <h2>Sakesh</h2>
-        <h3>Make a UI design</h3>
-        <h5>Status</h5>
-      </div>
-      <div className="bg-green-400 py-2 px-4 flex justify-between rounded">
-        <h2>Sakesh</h2>
-        <h3>Make a UI design</h3>
-        <h5>Status</h5>
-      </div>
-      <div className="bg-gray-400 py-2 px-4 flex justify-between rounded">
-        <h2>Sakesh</h2>
-        <h3>Make a UI design</h3>
-        <h5>Status</h5>
-      </div>
-      <div className="bg-yellow-400 py-2 px-4 flex justify-between rounded">
-        <h2>Sakesh</h2>
-        <h3>Make a UI design</h3>
-        <h5>Status</h5>
+      <div>
+        {authData.employees.map((employee, idx) => {
+          return (
+            <div
+              key={idx}
+              className="bg-emerald-950 py-2 px-4 flex justify-between rounded cursor-pointer hover:bg-emerald-900 transition-[1s] my-1 border border-emerald-700"
+            >
+              <h2 className="w-1/5 font-medium text-center">
+                {employee.firstName}
+              </h2>
+              <h3 className="w-1/5 font-medium text-center">
+                {employee.taskCount.newTask}
+              </h3>
+              <h5 className="w-1/5 font-medium text-center">
+                {employee.taskCount.active}
+              </h5>
+              <h5 className="w-1/5 font-medium text-center">
+                {employee.taskCount.completed}
+              </h5>
+              <h5 className="w-1/5 font-medium text-center">
+                {employee.taskCount.failed}
+              </h5>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

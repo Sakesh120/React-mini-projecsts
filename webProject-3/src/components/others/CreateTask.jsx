@@ -1,6 +1,7 @@
 import React from "react";
 
 const CreateTask = () => {
+  const submitHandler = () => {};
   return (
     <div className="p-5 bg-[#1c1c1c] mt-10 rounded">
       <form className="flex flex-wrap items-start justify-between w-full  ">

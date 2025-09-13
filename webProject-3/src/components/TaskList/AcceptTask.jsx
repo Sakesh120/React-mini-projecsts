@@ -12,7 +12,7 @@ const AcceptTask = ({ data }) => {
       </div>
       <h2 className="mt-5 text-2xl font-semibold">{data.title} </h2>
       <p className="text-sm text-gray-400 mt-2">{data.description}</p>
-      <div className="flex justify-between mt-15 ">
+      <div className="flex justify-between mt-15 mb-1">
         <button className="bg-green-500 py-1 px-2 text-sm text-white  rounded-sm cursor-pointer">
           Mark as Completed
         </button>
