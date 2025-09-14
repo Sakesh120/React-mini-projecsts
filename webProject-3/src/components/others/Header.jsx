@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { setlocalStrorage } from "../../utils/localStorage";
 
-const Header = ({ data }) => {
+const Header = (props) => {
   // const [username, setUsername] = useState("");
   // if (!data) {
   //   setUsername("Admin");
@@ -11,7 +11,8 @@ const Header = ({ data }) => {
 
   const logOutUser = () => {
     localStorage.setItem("loggedInUser", "");
-    window.location.reload();
+    // window.location.reload();
+    props.changeUser("");
   };
 
   return (
@@ -19,7 +20,7 @@ const Header = ({ data }) => {
       <h1 className="text-2xl font-medium">
         Hello <br />
         <span className="text-3xl font-semibold">
-          {data?.firstName ? `${data.firstName}👋` : "User👋"}
+          {props.data?.firstName ? `${props.data.firstName}👋` : "User👋"}
         </span>
       </h1>
       <button
