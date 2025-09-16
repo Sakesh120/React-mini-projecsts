@@ -22,7 +22,6 @@ const CreateTask = () => {
       completed: false,
     };
 
-    // Create updated employees array immutably
     const updatedEmployees = (userData || []).map((employee) => {
       if (assignTo === employee.firstName) {
         return {
@@ -44,7 +43,6 @@ const CreateTask = () => {
       console.error("Failed to persist employees to localStorage", err);
     }
 
-    console.log(updatedEmployees);
     setTasktitle("");
     setTaskDescription("");
     setTaskDate("");
@@ -55,69 +53,71 @@ const CreateTask = () => {
   return (
     <div className="p-5 bg-[#1c1c1c] mt-10 rounded">
       <form
-        onSubmit={(e) => {
-          submitHandler(e);
-        }}
-        className="flex flex-wrap items-start justify-between w-full  "
+        onSubmit={submitHandler}
+        className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center lg:justify-around justify-center w-full"
       >
-        <div className="w-1/2 ">
-          <div className="mt-2">
+        <div className="w-full lg:w-1/2 flex flex-col items-center">
+          <div className="mt-2 w-full max-w-sm">
             <h3 className="text-sm text-gray-300 mb-0.5">Task Title</h3>
             <input
               value={taskTitle}
               onChange={(e) => setTasktitle(e.target.value)}
               type="text"
               placeholder="Make a UI design"
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white"
+              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-white"
             />
           </div>
-          <div className="mt-2">
+
+          <div className="mt-2 w-full max-w-sm">
             <h3 className="text-sm text-gray-300 mb-0.5">Date</h3>
             <input
               value={taskDate}
               onChange={(e) => setTaskDate(e.target.value)}
               type="date"
-              placeholder="Select a date"
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white focus:border-blue-400 focus:ring-1 focus:ring-blue-300 transition"
+              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-white focus:border-blue-400 focus:ring-1 focus:ring-blue-300 transition"
             />
           </div>
-          <div className="mt-2">
-            <h3 className="text-sm text-gray-300 mb-0.5 ">Asign to</h3>
+
+          <div className="mt-2 w-full max-w-sm">
+            <h3 className="text-sm text-gray-300 mb-0.5">Assign to</h3>
             <input
               value={assignTo}
               onChange={(e) => setAssignTo(e.target.value)}
               type="text"
               placeholder="Employee name"
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white"
+              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-white"
             />
           </div>
-          <div className="mt-2">
+
+          <div className="mt-2 w-full max-w-sm">
             <h3 className="text-sm text-gray-300 mb-0.5">Category</h3>
             <input
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               type="text"
               placeholder="design, dev, etc."
-              className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white"
+              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-white"
             />
           </div>
         </div>
 
-        <div className="w-1/2 flex flex-col gap-2">
-          <h3 className="text-sm text-gray-300 mb-0.5">Description</h3>
-          <textarea
-            value={taskDescription}
-            onChange={(e) => setTaskDescription(e.target.value)}
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border border-white"
-          ></textarea>
+        <div className="w-full  lg:w-1/2 flex flex-col items-center">
+          <div className="w-full max-w-sm">
+            <h3 className="text-sm text-gray-300 mb-0.5">Description</h3>
+            <textarea
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+              rows="8"
+              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-white resize-none"
+              placeholder="Enter task details..."
+            ></textarea>
+          </div>
+          <button className="w-full max-w-sm bg-green-500 mt-5 rounded-[5px] p-2 shadow shadow-gray-500 cursor-pointer hover:bg-green-600 transition">
+            Create Task
+          </button>
         </div>
-        <button className="w-full bg-green-500 mt-10 rounded-[5px] p-2 shadow shadow-gray-500 cursor-pointer  hover:bg-green-600 transition-[3s] mx-auto ">
-          Create Task
-        </button>
+
+        {/* Submit Button */}
       </form>
     </div>
   );

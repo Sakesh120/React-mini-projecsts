@@ -3,43 +3,47 @@ import React, { useState } from "react";
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const submitHandler = (e) => {
     e.preventDefault();
     handleLogin(email, password);
     setEmail("");
     setPassword("");
   };
+
   return (
-    <div className="flex  h-screen w-screen items-center justify-center">
-      <div className="border-2 p-20 border-emerald-600 rounded-xl">
+    <div className="flex h-screen w-screen items-center justify-center px-4">
+      <div className="border-2 border-emerald-600 rounded-xl p-6 sm:p-10 md:p-16 lg:p-20 w-full max-w-md bg-[#1c1c1c]">
         <form
-          onSubmit={(e) => {
-            submitHandler(e);
-          }}
-          className="flex flex-col items-center justify-center"
+          onSubmit={submitHandler}
+          className="flex flex-col items-center justify-center w-full"
         >
+          {/* Email Input */}
           <input
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             required
-            className=" border-1 border-amber-100 rounded-xl px-5 py-3 text-xl outline-none "
             type="email"
             placeholder="Enter your email.."
+            className="w-full border border-amber-100 rounded-xl px-4 py-2 text-base sm:text-lg outline-none"
           />
+
+          {/* Password Input */}
           <input
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            onChange={(e) => setPassword(e.target.value)}
             required
-            className=" border-1 border-amber-100 rounded-xl px-5 py-3 text-xl outline-none  mt-3"
             type="password"
             placeholder="Enter password.."
+            className="w-full border border-amber-100 rounded-xl px-4 py-2 text-base sm:text-lg outline-none mt-3"
           />
-          <button className="mt-7  bg-emerald-600 border-1  border-amber-100 rounded-xl px-[115px] py-3 cursor-pointer focus:bg-emerald-700 transition-[2s] ">
-            log in
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full mt-7 bg-emerald-600 border border-amber-100 rounded-xl py-3 text-base sm:text-lg font-medium cursor-pointer hover:bg-emerald-700 transition-all duration-300"
+          >
+            Log in
           </button>
         </form>
       </div>
