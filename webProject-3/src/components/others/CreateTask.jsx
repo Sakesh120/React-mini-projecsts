@@ -1,38 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
+  const [userData, setUserData] = useContext(AuthContext);
   const [taskTitle, setTasktitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
 
-  const [task, setTask] = useState({});
   const submitHandler = (e) => {
     e.preventDefault();
     const newTask = {
-      taskTitle,
-      taskDescription,
-      taskDate,
+      title: taskTitle,
+      description: taskDescription,
+      date: taskDate,
       category,
-      assignTo,
       active: false,
       newTask: true,
       failed: false,
       completed: false,
     };
 
-    setTask(newTask); // keep state updated for UI
-
-    const data = JSON.parse(localStorage.getItem("employees"));
-    data.forEach((elem) => {
-      if (assignTo === elem.firstName) {
-        elem.tasks.push(newTask); // ✅ use newTask, not "task"
-        console.log(elem);
+    // Create updated employees array immutably
+    const updatedEmployees = (userData || []).map((employee) => {
+      if (assignTo === employee.firstName) {
+        return {
+          ...employee,
+          tasks: [...employee.tasks, newTask],
+          taskCount: {
+            ...employee.taskCount,
+            newTask: employee.taskCount.newTask + 1,
+          },
+        };
       }
+      return employee;
     });
 
-    localStorage.setItem("employees", JSON.stringify(data));
+    setUserData(updatedEmployees);
+    try {
+      localStorage.setItem("employees", JSON.stringify(updatedEmployees));
+    } catch (err) {
+      console.error("Failed to persist employees to localStorage", err);
+    }
+
+    console.log(updatedEmployees);
     setTasktitle("");
     setTaskDescription("");
     setTaskDate("");
