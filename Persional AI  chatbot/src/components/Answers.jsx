@@ -31,7 +31,7 @@ const Answer = ({ ans, index, totalResult, type }) => {
       ) : (
         <code
           {...props}
-          className="bg-gray-200 dark:bg-gray-700 px-1 rounded text-sm"
+          className="bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded text-sm font-mono"
         >
           {children}
         </code>
@@ -42,17 +42,21 @@ const Answer = ({ ans, index, totalResult, type }) => {
   return (
     <>
       {index === 0 && totalResult > 1 ? (
-        <span className="pt-1 block font-bold text-xl dark:text-white text-gray-800">
+        <div className="font-semibold text-lg text-gray-900 dark:text-white mb-2">
           {answer}
-        </span>
+        </div>
       ) : heading ? (
-        <span className="pt-1 block font-bold text-lg dark:text-white text-gray-900">
+        <div className="font-semibold text-base text-gray-900 dark:text-white mb-2">
           {answer}
-        </span>
+        </div>
       ) : (
-        <span className={type === "q" ? "" : "pl-5"}>
+        <div
+          className={
+            type === "q" ? "text-white" : "text-gray-900 dark:text-white"
+          }
+        >
           <ReactMarkdown components={components}>{answer}</ReactMarkdown>
-        </span>
+        </div>
       )}
     </>
   );

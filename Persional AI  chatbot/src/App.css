@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .h-130 {
+    height: 24rem;
+  }
+}
+
+/* Smooth scrolling for mobile */
+.container {
+  scroll-behavior: smooth;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Ensure text is readable on mobile */
+  .dark\:text-zinc-300 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
