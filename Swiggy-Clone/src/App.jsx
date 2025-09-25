@@ -1,14 +1,10 @@
-import React from 'react'
-import Header from './header'
+import React from "react";
 const App = () => {
   return (
     <div>
-      <Header />
-      <h1 className="text-[20px] text-red-600 bg-yellow-500">
-        Hello this is vite + React!
-      </h1>
+      <h1 className="text-5xl text-red-500">Hello</h1>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
