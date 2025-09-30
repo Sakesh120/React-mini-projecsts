@@ -71,7 +71,7 @@ const Category = () => {
     },
   ];
   return (
-    <div className="lg:max-w-[1200px] mx-auto ">
+    <div className="lg:max-w-[1200px] mx-auto  ">
       <div className="flex justify-between items-center  mt-4">
         <div className="text-2xl font-bold">What's on your mind?</div>
         <div className="flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
@@ -108,7 +108,8 @@ const Category = () => {
           </div>
         ))}
       </div>
-      <hr className="my-4 border-[1px] border-b-rose-500" />
+      <br />
+      <hr />
     </div>
   );
 };

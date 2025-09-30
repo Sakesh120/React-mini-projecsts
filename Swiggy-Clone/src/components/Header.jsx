@@ -43,7 +43,7 @@ const Header = () => {
   return (
     <>
       <div
-        className="black-overlay w-full h-full fixed duration-[500ms]"
+        className="black-overlay w-full h-full fixed duration-[500ms] z-[99]"
         onClick={hideSideMenu}
         style={{
           opacity: toggle ? 1 : 0,
