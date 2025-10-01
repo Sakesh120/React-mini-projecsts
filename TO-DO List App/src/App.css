@@ -1,0 +1,157 @@
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+ul {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ff5945 #f1f1f1;
+}
+
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #ff5945;
+  border-radius: 3px;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background: #e04a3a;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 89, 69, 0.15);
+}
+
+li {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.completed {
+  animation: completeTask 0.3s ease-out;
+}
+
+@keyframes completeTask {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ff5945, #ff7f6b, #ff9f8b);
+  background-size: 200% 100%;
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-container {
+    padding: 16px;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  .mobile-spacing {
+    margin: 8px 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-container {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .desktop-container {
+    max-width: 600px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+@media (prefers-contrast: high) {
+  button {
+    border: 2px solid currentColor;
+  }
+
+  input {
+    border: 2px solid #ccc;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
