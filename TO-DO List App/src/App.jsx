@@ -1,23 +1,18 @@
-import React from 'react'
-import Header from './header'
+import React from "react";
+import ToDoBox from "./ToDoBox";
+
 const App = () => {
   return (
-    <div>
-     <h1> My Todos</h1>
-     <div className="todo-wrapper">
-      <div className="todo-input">
-        <div className="todo-input-items">
-          <label htmlFor="">Title</label>
-          <input type="text" placeholder="What's your task?..." />
-        </div>
-             <div className="todo-input-items">
-          <label htmlFor="">Description</label>
-          <input type="text" placeholder="What's your task?..." />
-        </div>
-      </div>
-      </div>
+    <div
+      className=" bg-gradient-to-bl
+from-[#0f172a]
+via-[#1e1a78]
+to-[#0f172a]
+ w-[100%] min-h-[100vh] p-[10px]"
+    >
+      <ToDoBox />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
