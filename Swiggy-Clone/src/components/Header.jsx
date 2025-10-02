@@ -54,7 +54,7 @@ const Header = () => {
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="w-[500px] bg-white h-full absolute duration-[500ms]"
+        className="w-[500px] bg-white h-full absolute duration-[500ms] z-[99]"
         style={{
           left: toggle ? "0%" : "-100%",
         }}

@@ -133,8 +133,10 @@ const TopRest = () => {
           </div>
         </div>
       </div>
-      <div className="flex mt-4">
-        <Card data={data} />
+      <div className="flex mt-4 gap-6 overflow-hidden">
+        {data.map((d, i) => (
+          <Card info={d} key={i} />
+        ))}
       </div>
     </div>
   );
