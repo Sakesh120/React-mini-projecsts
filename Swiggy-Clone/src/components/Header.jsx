@@ -68,7 +68,7 @@ const Header = () => {
             <span className="font-bold border-b-[3px] text-[#222] border-black cursor-pointer mr-[5px]  transition-[1s]">
               Ratanada
             </span>
-            Jodhpur, Rajasthan, India{" "}
+            Shahapur, Maharastra, India
             <RxCaretDown
               fontSize={25}
               className="inline text-[0.9rem] font-bold text-[#fc8019] cursor-pointer"

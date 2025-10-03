@@ -1,9 +1,7 @@
 import React from "react";
-import { GoArrowLeft } from "react-icons/go";
-import { GoArrowRight } from "react-icons/go";
 import Card from "./Card";
 
-const TopRest = () => {
+const OnlineDelivery = () => {
   const data = [
     {
       image: "/images/2b4f62d606d1b2bfba9ba9e5386fabb7.jpeg",
@@ -107,40 +105,19 @@ const TopRest = () => {
     },
   ];
   return (
-    <div className="lg:max-w-[1200px] mx-auto ">
+    <div className="lg:max-w-[1200px] mx-auto mt-15 ">
       <div className="flex justify-between items-center  mt-4">
         <div className="text-2xl font-bold">
-          Top restaurant chains in Shahapur
-        </div>
-        <div className="flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
-          <div
-            className="bg-[#e2e2e2] w-[30px] h-[30px] rounded-full flex justify-center items-center "
-            onClick={() => {
-              if (slide == 0) return false;
-              setSlide(slide - 2);
-            }}
-          >
-            <GoArrowLeft />
-          </div>
-          <div
-            className="bg-[#e2e2e2]  w-[30px] h-[30px] rounded-full flex justify-center items-center"
-            onClick={() => {
-              if (Categories.length - 8 == slide) return false;
-              setSlide(slide + 2);
-            }}
-          >
-            <GoArrowRight />
-          </div>
+          Restaurants with online food delivery in Shahapur
         </div>
       </div>
-      <div className="flex mt-4 gap-6 overflow-hidden">
+      <div className="grid lg:grid-cols-4  sm:grid-cols-2 sm:gap-1 lg:gap-3 mt-5">
         {data.map((d, i) => (
           <Card info={d} key={i} />
         ))}
       </div>
-      <hr className="my-6 border-[1px] border-[#b5bbb1]" />
     </div>
   );
 };
 
-export default TopRest;
+export default OnlineDelivery;

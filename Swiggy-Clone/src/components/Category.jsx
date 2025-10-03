@@ -108,8 +108,8 @@ const Category = () => {
           </div>
         ))}
       </div>
-      <br />
-      <hr />
+
+      <hr className="my-6 border-[1px] border-[#c5c9c2]" />
     </div>
   );
 };
