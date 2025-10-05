@@ -1,82 +1,82 @@
 nav {
-    width: 100%;
-    /* background: #333; */
-    color: white;
-    padding: 5px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
+  width: 100%;
+  /* background: #333; */
+  color: white;
+  padding: 5px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
 }
 
 .logo {
-    width: 180px;
+  width: 180px;
 }
 
 nav ul li {
-    display: inline;
-    list-style: none;
-    margin: 5px 20px;
-    font-size: 14px;
+  display: inline;
+  list-style: none;
+  margin: 5px 20px;
+  font-size: 14px;
 }
 
 .dark-nav {
-    background: #212EA0;
-    transition: 0.5s;
-
+  background: #212ea0;
+  transition: 0.5s;
 }
 
-.menu-icon{
-    display:none;
+.menu-icon {
+  display: none;
 }
 
 /* media queary */
 @media (max-width: 1050px) {
-    .logo {
-        width: 140px;
-    }
+  .logo {
+    width: 140px;
+  }
 
-    nav ul li {
+  nav ul li {
     margin: 5px 10px;
-    }
-
-
+  }
+}
+#navOp:active {
+  text-decoration: underline;
+  transition: 2s;
 }
 
 /* media query */
 
-@media (max-width:800px){
-    nav{
-        padding: 15px 0;
-
-    }
-    nav ul{
-        position:fixed;
-        top: 0 ;
-        right:0;
-        background: #3d1c41ab;
-        z-index: -1;
-        width: 200px;
-        padding-top: 70px;
-        transition: 0.5s;
-        bottom: 0;
-    }
-    nav ul li{
-        display: block;
-        margin:25px 40px;
-    }
-    nav ul li .btn{
-        width: 135px;
-        margin: 25px -13px;
-    }
-    .menu-icon{
-        display:block;
-        cursor: pointer;
-    }
-    .hide-mobile-menu{
-        right: -200px;
-    }
+@media (max-width: 800px) {
+  nav {
+    padding: 15px 0;
+  }
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #3d1c41ab;
+    z-index: -1;
+    width: 200px;
+    padding-top: 70px;
+    transition: 0.5s;
+    bottom: 0;
+  }
+  nav ul li {
+    display: block;
+    margin: 25px 40px;
+  }
+  nav ul li .btn {
+    width: 135px;
+    margin: 25px -13px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  .hide-mobile-menu {
+    right: -200px;
+  }
 }
