@@ -54,17 +54,17 @@ const Header = () => {
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="w-[500px] bg-white h-full absolute duration-[500ms] z-[99]"
+        className="fixed top-0 w-[85%] max-w-[500px] bg-white h-full  duration-[500ms] z-[99]"
         style={{
           left: toggle ? "0%" : "-100%",
         }}
       ></div>
-      <header className="p-[15px] shadow-xl ">
+      <header className="  sticky top-0 p-[15px] shadow-xl bg-white z-[50] ">
         <div className="max-w-[1200px] mx-auto  flex items-center text-[#686b78]">
-          <div className="w-[90px]">
-            <img src="images/logo1.png" className="w-full" alt="" />
+          <div className="w-[80px] sm:w-[90px]">
+            <img src="/images/logo1.png" className="w-full h-auto" alt="" />
           </div>
-          <div className=" ">
+          <div className=" ml-2 text-sm sm:text-base ">
             <span className="font-bold border-b-[3px] text-[#222] border-black cursor-pointer mr-[5px]  transition-[1s]">
               Ratanada
             </span>
@@ -75,7 +75,7 @@ const Header = () => {
               onClick={showSideMenu}
             />
           </div>
-          <nav className="flex list-none gap-8 ml-auto  text-[18px] font-semibold">
+          <nav className="hidden md:flex list-none gap-6 lg:gap-8 ml-auto  text-[16px] lg:text-[18px] font-semibold">
             {links.map((item, index) => (
               <li
                 className="flex items-center gap-2 cursor-pointer hover:text-[#fc8019] transition-[0.8s] hover:scale-[1.1]"

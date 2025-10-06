@@ -71,10 +71,10 @@ const Category = () => {
     },
   ];
   return (
-    <div className="lg:max-w-[1200px] mx-auto  ">
-      <div className="flex justify-between items-center  mt-4">
-        <div className="text-2xl font-bold">What's on your mind?</div>
-        <div className="flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
+    <div className="lg:max-w-[1200px] mx-auto px-4  ">
+      <div className="flex justify-between items-center mt-4">
+        <div className="text-xl sm:text-2xl font-bold">What's on your mind?</div>
+        <div className="hidden sm:flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
           <div
             className="bg-[#e2e2e2] w-[30px] h-[30px] rounded-full flex justify-center items-center "
             onClick={() => {
@@ -95,16 +95,16 @@ const Category = () => {
           </div>
         </div>
       </div>
-      <div className="flex overflow-hidden ">
+      <div className="flex overflow-hidden gap-3 sm:gap-4 py-2">
         {Categories.map((item, index) => (
           <div
             style={{
               transform: `translateX(-${slide * 100}%)`,
             }}
             key={index}
-            className="w-[150px] shrink-0 duration-500"
+            className="w-[120px] xs:w-[140px] sm:w-[150px] shrink-0 duration-500"
           >
-            <img src={item.img} alt={item.name} />
+            <img src={item.img} alt={item.name} className="w-full h-auto" loading="lazy" />
           </div>
         ))}
       </div>

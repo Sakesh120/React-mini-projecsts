@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "./Card";
 
 const OnlineDelivery = () => {
@@ -104,14 +104,55 @@ const OnlineDelivery = () => {
       place: "Chopsani Housing Board",
     },
   ];
+
+  const componentRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const [initialOffset, setInitialOffset] = useState(0);
+
+  useEffect(() => {
+    if (componentRef.current) {
+      setInitialOffset(componentRef.current.offsetTop);
+    }
+    const handleScroll = () => {
+      if (componentRef.current) {
+        setIsSticky(window.scrollY >= initialOffset);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [initialOffset]);
   return (
-    <div className="lg:max-w-[1200px] mx-auto mt-15 ">
-      <div className="flex justify-between items-center  mt-4">
-        <div className="text-2xl font-bold">
+    <div className="lg:max-w-[1200px] mx-auto mt-15 px-4 ">
+      <div className="flex justify-between items-center mt-4">
+        <div className="text-xl sm:text-2xl font-bold">
           Restaurants with online food delivery in Shahapur
         </div>
       </div>
-      <div className="grid lg:grid-cols-4  sm:grid-cols-2 sm:gap-1 lg:gap-3 mt-5">
+
+      <div
+        ref={componentRef}
+        className={isSticky ? "fixed top-0 z-[10] bg-white w-full left-0" : ""}
+        style={isSticky ? { boxShadow: "0 2px 8px rgba(0,0,0,0.05)" } : {}}
+      >
+        <div className="max-w-[1200px] mx-auto my-4 flex gap-1 [&>*]:cursor-pointer px-4 sm:px-0 ">
+          <div className="p-2 sm:p-3 rounded-md shadow mx-1 hover:shadow-xl transition-[1s] text-sm sm:text-base">
+            Filter
+          </div>
+          <div className="p-2 sm:p-3 rounded-md shadow mx-1 hover:shadow-xl transition-[1s] text-sm sm:text-base">
+            Short By
+          </div>
+          <div className="p-2 sm:p-3 rounded-md shadow mx-1 hover:shadow-xl transition-[1s] text-sm sm:text-base">
+            New items
+          </div>
+          <div className="p-2 sm:p-3 rounded-md shadow mx-1 hover:shadow-xl transition-[1s] text-sm sm:text-base">
+            Liked
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-1 lg:gap-3 mt-3 px-2 sm:px-0 ">
         {data.map((d, i) => (
           <Card info={d} key={i} />
         ))}

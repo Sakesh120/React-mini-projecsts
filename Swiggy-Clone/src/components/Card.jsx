@@ -2,11 +2,12 @@ import React from "react";
 
 const Card = ({ info }) => {
   return (
-    <div className="w-[273px] shrink-0 grow mt-1">
-      <div className="group h-[182px] rounded-[15px] overflow-hidden relative cursor-pointer">
+    <div className="w-[80vw] xs:w-[300px] sm:w-[260px] md:w-[273px] shrink-0 grow mt-1">
+      <div className="group h-[180px] sm:h-[182px] rounded-[15px] overflow-hidden relative cursor-pointer">
         <img
           className="group-hover:scale-110 duration-150 object-cover w-full h-full"
           src={info.image}
+          loading="lazy"
           alt=""
         />
         <div className="image-overlay absolute w-full h-full top-0 flex items-end p-2 text-white text-[25px] font-bold tracking-tighter">

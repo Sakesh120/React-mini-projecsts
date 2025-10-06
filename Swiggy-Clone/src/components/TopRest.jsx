@@ -107,12 +107,12 @@ const TopRest = () => {
     },
   ];
   return (
-    <div className="lg:max-w-[1200px] mx-auto ">
-      <div className="flex justify-between items-center  mt-4">
-        <div className="text-2xl font-bold">
+    <div className="lg:max-w-[1200px] mx-auto px-4 ">
+      <div className="flex justify-between items-center mt-4">
+        <div className="text-xl sm:text-2xl font-bold">
           Top restaurant chains in Shahapur
         </div>
-        <div className="flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
+        <div className="hidden sm:flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
           <div
             className="bg-[#e2e2e2] w-[30px] h-[30px] rounded-full flex justify-center items-center "
             onClick={() => {
@@ -133,7 +133,7 @@ const TopRest = () => {
           </div>
         </div>
       </div>
-      <div className="flex mt-4 gap-6 overflow-hidden">
+      <div className="flex mt-4 gap-4 sm:gap-6 overflow-auto sm:overflow-hidden pl-4 sm:pl-0">
         {data.map((d, i) => (
           <Card info={d} key={i} />
         ))}
