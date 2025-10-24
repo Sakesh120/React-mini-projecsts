@@ -5,9 +5,11 @@ import Product from "./pages/Product";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Card from "./pages/Card";
+import Navbar from "./components/Navbar";
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<Product />}></Route>
