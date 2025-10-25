@@ -13,8 +13,6 @@ import {
 import { CgClose } from "react-icons/cg";
 
 const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
-  console.log(location);
-
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
