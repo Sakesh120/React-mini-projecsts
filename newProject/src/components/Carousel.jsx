@@ -1,17 +1,17 @@
-import React, { useContext, useEffect } from "react";
-import { DataContext } from "../context/DataContext";
+import React, { useEffect } from "react";
+import { getData } from "../context/DataContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Slice } from "lucide-react";
 import {
   AiOutlineAccountBook,
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
 } from "react-icons/ai";
+import Category from "./Category";
 
 const Carousel = () => {
-  const { data, fetchAllProducts } = useContext(DataContext);
+  const { data, fetchAllProducts } = getData();
   console.log(data);
   useEffect(() => {
     fetchAllProducts();
@@ -113,6 +113,7 @@ const Carousel = () => {
           );
         })}
       </Slider>
+      <Category />
     </div>
   );
 };
