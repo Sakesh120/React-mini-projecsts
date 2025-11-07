@@ -110,7 +110,7 @@ const TopRest = () => {
     <div className="lg:max-w-[1200px] mx-auto px-4 ">
       <div className="flex justify-between items-center mt-4">
         <div className="text-xl sm:text-2xl font-bold">
-          Top restaurant chains in Shahapur
+          Top restaurant chains in Sakoli
         </div>
         <div className="hidden sm:flex justify-center gap-3 items-center [&>*]:cursor-pointer [&>*]:active:bg-[#cabdbd] ">
           <div

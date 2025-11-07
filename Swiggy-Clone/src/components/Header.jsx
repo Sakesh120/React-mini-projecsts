@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { RxCaretDown } from "react-icons/rx";
+import { RxCaretDown, RxCross1 } from "react-icons/rx";
 import { IoMdSearch } from "react-icons/io";
 import { CiDiscount1 } from "react-icons/ci";
 import { FaHandsHelping } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa";
+import { RiFocus3Line } from "react-icons/ri";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -58,7 +59,23 @@ const Header = () => {
         style={{
           left: toggle ? "0%" : "-100%",
         }}
-      ></div>
+      >
+        <div className="absolute m-[60px]  p-[20px] w-[70%] flex flex-col gap-4">
+          <RxCross1 className="cursor-pointer" onClick={hideSideMenu} />
+          <input
+            type="text"
+            className="p-2 text-black border-[0.5px] rounded-xl w-[100%] shadow-sm font-serif active:shadow-xl active:border-0"
+            placeholder="Search for area, street name..."
+          />
+          <div className="w-[100%] h-[150px] border-1 border-gray-500 rounded-2xl p-4 flex flex-col">
+            <div className="flex gap-3 items-center lg:text-xl ">
+              <RiFocus3Line />
+              <h1 className="hover:text-green-700 ">Get Current Location</h1>
+            </div>
+            <h2 className="ml-[25px] lg:ml-[30px] text-gray-">Using GPS</h2>
+          </div>
+        </div>
+      </div>
       <header className="  sticky top-0 p-[15px] shadow-xl bg-white z-[50] ">
         <div className="max-w-[1200px] mx-auto  flex items-center text-[#686b78]">
           <div className="w-[80px] sm:w-[90px]">
@@ -68,7 +85,7 @@ const Header = () => {
             <span className="font-bold border-b-[3px] text-[#222] border-black cursor-pointer mr-[5px]  transition-[1s]">
               Ratanada
             </span>
-            Shahapur, Maharastra, India
+            Sakoli, Maharastra, India
             <RxCaretDown
               fontSize={25}
               className="inline text-[0.9rem] font-bold text-[#fc8019] cursor-pointer"

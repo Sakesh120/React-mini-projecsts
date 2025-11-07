@@ -127,7 +127,7 @@ const OnlineDelivery = () => {
     <div className="lg:max-w-[1200px] mx-auto mt-15 px-4 ">
       <div className="flex justify-between items-center mt-4">
         <div className="text-xl sm:text-2xl font-bold">
-          Restaurants with online food delivery in Shahapur
+          Restaurants with online food delivery in Sakoli
         </div>
       </div>
 
