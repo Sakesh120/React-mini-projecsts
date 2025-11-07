@@ -12,7 +12,6 @@ const Category = () => {
   };
 
   const categoryOnlyData = getUniqueCategory(data, "category");
-  console.log(categoryOnlyData);
   useEffect(() => {
     fetchAllProducts();
   }, []);

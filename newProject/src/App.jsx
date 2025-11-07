@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Card from "./pages/Card";
 import Navbar from "./components/Navbar";
 import axios from "axios";
+import Footer from "./components/Footer";
 const App = () => {
   const [location, setLocation] = useState();
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/card" element={<Card />}></Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
