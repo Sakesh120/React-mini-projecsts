@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getData } from "../context/DataContext";
+import FilterSection from "../components/FilterSection";
+import Loading from "../assets/Loading4.webm";
+import ProductCard from "../components/ProductCard";
 
 const Product = () => {
+  const { data, fetchAllProducts } = getData();
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
   return (
-    <div>
-      <h3>Hey this is product page</h3>
-    </div>
+    <>
+      <div className="max-w-6xl mx-auto px-4 mb-10">
+        {data?.length > 0 ? (
+          <div className="`flex gap-8">
+            <FilterSection />
+            <div>
+              {data?.map((product, index) => {
+                return <ProductCard product={product} key={index} />;
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-[400px]">
+            <video muted autoPlay loop>
+              <source src={Loading} type="video/webm" />
+            </video>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
