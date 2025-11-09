@@ -2,16 +2,8 @@ import { useEffect } from "react";
 import { getData } from "../context/DataContext";
 
 const Category = () => {
-  const { data, fetchAllProducts } = getData();
-  const getUniqueCategory = (data, property) => {
-    let newVA1 = data?.map((curElem) => {
-      return curElem[property];
-    });
-    newVA1 = [...new Set(newVA1)];
-    return newVA1;
-  };
+  const { data, fetchAllProducts, categoryOnlyData } = getData();
 
-  const categoryOnlyData = getUniqueCategory(data, "category");
   useEffect(() => {
     fetchAllProducts();
   }, []);

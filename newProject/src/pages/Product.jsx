@@ -13,9 +13,9 @@ const Product = () => {
     <>
       <div className="max-w-6xl mx-auto px-4 mb-10">
         {data?.length > 0 ? (
-          <div className="`flex gap-8">
+          <div className="flex gap-8">
             <FilterSection />
-            <div>
+            <div className="grid grid-cols-4 gap-7 mt-10 ">
               {data?.map((product, index) => {
                 return <ProductCard product={product} key={index} />;
               })}

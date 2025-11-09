@@ -2,8 +2,12 @@ import React from "react";
 
 const FilterSection = () => {
   return (
-    <div>
-      <h4>FilterSection</h4>
+    <div className="bg-gray-100 nt-10 rounded-md h-max ">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="bg-white p-2 rounded-md border-gray-400 border-2"
+      />
     </div>
   );
 };
