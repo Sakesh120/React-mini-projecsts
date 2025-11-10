@@ -6,8 +6,16 @@
   width: 3rem;
   height: 3rem;
 }
+/* carousal arrow */
 .arrows {
   width: 40px;
   height: 40px;
   margin: 1px;
+}
+
+input {
+  background-color: #fff;
+  accent-color: red;
+  border: 1px solid #ccc;
+  color: #333;
 }
