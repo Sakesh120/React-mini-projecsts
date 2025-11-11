@@ -8,11 +8,12 @@ const FilterSection = ({
   priceRange,
   setPriceRange,
   handleCategoryChange,
+  setCategory,
 }) => {
   const { categoryOnlyData } = getData();
 
   return (
-    <div className="bg-gray-100 mt-10 rounded-md h-max ">
+    <div className="bg-gray-50 mt-10 rounded-md h-max ">
       <input
         type="text"
         placeholder="Search..."
@@ -21,7 +22,7 @@ const FilterSection = ({
         className="bg-white p-2 rounded-md border-gray-400 border-2"
       />
       {/* category data */}
-      <h1 className="mt-5 font-semibold text-xl">Category</h1>
+      <h1 className="mt-10 font-semibold text-xl">Category</h1>
       <div className="flex flex-col gap-2 mt-3 ">
         {categoryOnlyData?.map((item, index) => {
           return (
@@ -40,13 +41,15 @@ const FilterSection = ({
       </div>
 
       {/* price range */}
-      <h1 className="mt-20 font-semibold text-xl">Price Range</h1>
+      <h1 className="mt-30 font-semibold text-xl">Price Range</h1>
       <div className=" flex flex-col gap-2 ">
         <label htmlFor="">
           Price range : ${priceRange[0]} - ${priceRange[1]}
         </label>
         <input
           type="range"
+          min="0"
+          max="1000"
           className=" cursor-pointer"
           value={priceRange[1]}
           onChange={(e) =>
@@ -54,7 +57,14 @@ const FilterSection = ({
           }
         />
       </div>
-      <button className="bg-orange-500 hover:bg-red-700 cursor-pointer text-white rounded-md py-2 mt-5 px-2 ">
+      <button
+        className="bg-orange-500 hover:bg-red-700 cursor-pointer text-white rounded-md py-2 mt-5 px-2 "
+        onClick={() => {
+          setSearch("");
+          setCategory("all");
+          setPriceRange([0, 1000]);
+        }}
+      >
         Reset Filters
       </button>
     </div>

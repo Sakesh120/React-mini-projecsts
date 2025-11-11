@@ -4,12 +4,14 @@ import FilterSection from "../components/FilterSection";
 import Loading from "../assets/Loading4.webm";
 import ProductCard from "../components/ProductCard";
 import { CloudCog } from "lucide-react";
+import Pagination from "../components/Pagination";
 
 const Product = () => {
   const { data, fetchAllProducts } = getData();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchAllProducts();
@@ -19,6 +21,11 @@ const Product = () => {
     setCategory(e.target.value);
     console.log(category);
   };
+
+  const pageHandler = (selectedPage) => {
+    setPage(selectedPage);
+  };
+
   const filterData = data?.filter((item) => {
     const matchesSearch = item.title
       ?.toLowerCase()
@@ -48,10 +55,15 @@ const Product = () => {
               setPriceRange={setPriceRange}
               handleCategoryChange={handleCategoryChange}
             />
-            <div className="grid grid-cols-4 gap-7 mt-10 ">
-              {filterData?.map((product, index) => {
-                return <ProductCard product={product} key={index} />;
-              })}
+            <div className="flex flex-col">
+              <div className="grid grid-cols-4 gap-7 mt-10 ">
+                {filterData
+                  ?.slice(page * 8 - 8, page * 8)
+                  .map((product, index) => {
+                    return <ProductCard product={product} key={index} />;
+                  })}
+              </div>
+              <Pagination page={page} pageHandler={pageHandler} />
             </div>
           </div>
         ) : (
