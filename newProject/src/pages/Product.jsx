@@ -21,6 +21,7 @@ const Product = () => {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
     console.log(category);
+    setPage(1);
   };
 
   const pageHandler = (selectedPage) => {
