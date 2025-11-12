@@ -3,8 +3,9 @@ import { getData } from "../context/DataContext";
 import FilterSection from "../components/FilterSection";
 import Loading from "../assets/Loading4.webm";
 import ProductCard from "../components/ProductCard";
-import { CloudCog } from "lucide-react";
 import Pagination from "../components/Pagination";
+import Lottie from "lottie-react";
+import notfound from "../assets/notfound.json";
 
 const Product = () => {
   const { data, fetchAllProducts } = getData();
@@ -41,6 +42,8 @@ const Product = () => {
     return matchesSearch && matchesCategory && matchesPrice;
   });
   console.log(filterData);
+  const dynamicPage = Math.ceil(filterData?.length / 8);
+
   return (
     <>
       <div className="max-w-6xl mx-auto px-4 mb-10">
@@ -55,16 +58,26 @@ const Product = () => {
               setPriceRange={setPriceRange}
               handleCategoryChange={handleCategoryChange}
             />
-            <div className="flex flex-col">
-              <div className="grid grid-cols-4 gap-7 mt-10 ">
-                {filterData
-                  ?.slice(page * 8 - 8, page * 8)
-                  .map((product, index) => {
-                    return <ProductCard product={product} key={index} />;
-                  })}
+            {filterData?.length > 0 ? (
+              <div className="flex flex-col justify-center items-center">
+                <div className="grid grid-cols-4 gap-7 mt-10 ">
+                  {filterData
+                    ?.slice(page * 8 - 8, page * 8)
+                    .map((product, index) => {
+                      return <ProductCard product={product} key={index} />;
+                    })}
+                </div>
+                <Pagination
+                  page={page}
+                  pageHandler={pageHandler}
+                  dynamicPage={dynamicPage}
+                />
               </div>
-              <Pagination page={page} pageHandler={pageHandler} />
-            </div>
+            ) : (
+              <div className="flex justify-center items-center md:h-[600px] w-[900px] mt-10">
+                <Lottie animationData={notfound} classID="w-[500px]" />
+              </div>
+            )}
           </div>
         ) : (
           <div className="flex items-center justify-center h-[400px]">
