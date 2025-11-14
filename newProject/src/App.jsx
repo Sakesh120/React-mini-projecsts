@@ -8,6 +8,7 @@ import Card from "./pages/Card";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import Footer from "./components/Footer";
+import SingleProduct from "./components/SingleProduct";
 const App = () => {
   const [location, setLocation] = useState();
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<Product />}></Route>
+        <Route path="/products/:id" element={<SingleProduct />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/card" element={<Card />}></Route>
