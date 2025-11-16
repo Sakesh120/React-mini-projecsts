@@ -11,8 +11,10 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { CgClose } from "react-icons/cg";
+import { useCart } from "../context/CartContext";
 
 const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
+  const { cartItem } = useCart();
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
@@ -112,7 +114,7 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
           <Link to={"/card"} className="relative">
             <FiShoppingCart className="h-7 w-7" />
             <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white ">
-              0
+              {cartItem.length}
             </span>
           </Link>
           <div className="">

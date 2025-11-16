@@ -21,7 +21,6 @@ const Product = () => {
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
-    console.log(category);
     setPage(1);
   };
 
@@ -43,7 +42,6 @@ const Product = () => {
 
     return matchesSearch && matchesCategory && matchesPrice;
   });
-  console.log(filterData);
   const dynamicPage = Math.ceil(filterData?.length / 8);
 
   return (
