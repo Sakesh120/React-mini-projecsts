@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import Loading from "../assets/Loading4.webm";
 import Breadcrums from "./Breadcrums";
 import { SlBasket } from "react-icons/sl";
+import { useCart } from "../context/CartContext";
 
 const SingleProduct = () => {
   const params = useParams();
   const [singleProduct, setSingleProduct] = useState("");
+  const { addToCart } = useCart();
   const getSingleProduct = async () => {
     try {
       const res = await axios.get(
@@ -70,7 +72,10 @@ const SingleProduct = () => {
                 />
               </div>
               <div className="flex gap-4 mt-4">
-                <button className="bg-red-500 hover:bg-red-700 px-3 py-2 text-lg rounded-md flex text-white gap-1 cursor-pointer w-[50%] items-center justify-center font-semibold">
+                <button
+                  onClick={() => addToCart(singleProduct)}
+                  className="bg-red-500 hover:bg-red-700 px-3 py-2 text-lg rounded-md flex text-white gap-1 cursor-pointer w-[50%] items-center justify-center font-semibold"
+                >
                   <SlBasket className="w-6 h-6" /> Add to Card
                 </button>
               </div>
