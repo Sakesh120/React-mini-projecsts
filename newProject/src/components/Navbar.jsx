@@ -18,6 +18,8 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
+  console.log(location);
+
   return (
     <div className="bg-white py-3 shadow-2xl ">
       <div className="max-w-6xl mx-auto flex justify-between items-center">

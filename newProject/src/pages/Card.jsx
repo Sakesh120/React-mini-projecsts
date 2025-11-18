@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { MdDeleteOutline } from "react-icons/md";
+import { LuNotebookText } from "react-icons/lu";
+import { TbTruckDelivery } from "react-icons/tb";
+import { GiShoppingBag, GiTakeMyMoney } from "react-icons/gi";
+import { useUser } from "@clerk/clerk-react";
 
-const Card = () => {
-  const { cartItem } = useCart();
-  const [quantity, setQuantity] = useState(1);
+const Card = ({ location, getLocation }) => {
+  const { cartItem, updateQauntity } = useCart();
+  const { user } = useUser();
+  console.log(location);
+
+  const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
   return (
     <div className="mt-10 max-w-6xl mx-auto mb-5 ">
       {cartItem.length > 0 ? (
@@ -35,17 +42,17 @@ const Card = () => {
                       <button
                         className="cursor-pointer "
                         onClick={() =>
-                          quantity > 1
-                            ? setQuantity(quantity - 1)
-                            : setQuantity(quantity)
+                          updateQauntity(cartItem, item.id, "decrease")
                         }
                       >
                         -
                       </button>
-                      <span>{quantity}</span>
+                      <span>{item.quantity}</span>
                       <button
                         className="cursor-pointer "
-                        onClick={() => setQuantity(quantity + 1)}
+                        onClick={() =>
+                          updateQauntity(cartItem, item.id, "increase")
+                        }
                       >
                         +
                       </button>
@@ -68,6 +75,7 @@ const Card = () => {
                     type="text"
                     placeholder="Nam likhoo Tumhara...."
                     className="p-2 rounded-md"
+                    value={user.fullName}
                   />
                 </div>
                 <div className="flex flex-col space-y-1">
@@ -76,6 +84,7 @@ const Card = () => {
                     type="text"
                     placeholder="Bataoo Kaha pe bhejana hai..."
                     className="p-2 rounded-md"
+                    value={location ? location.county : ""}
                   />
                 </div>
                 <div className="flex w-full space-y-1 gap-2">
@@ -85,6 +94,7 @@ const Card = () => {
                       type="text"
                       placeholder="State"
                       className="p-2 rounded-md "
+                      value={location ? location.state : ""}
                     />
                   </div>
                   <div className="flex flex-col space-y-1 w-full">
@@ -95,6 +105,7 @@ const Card = () => {
                       minLength={6}
                       placeholder="Code"
                       className="p-2 rounded-md "
+                      value={location ? location.postcode : ""}
                     />
                   </div>
                 </div>
@@ -105,6 +116,7 @@ const Card = () => {
                       type="text"
                       placeholder="india"
                       className="p-2 rounded-md "
+                      value={location ? location.country : ""}
                     />
                   </div>
                   <div className="flex flex-col space-y-1 w-full">
@@ -125,10 +137,75 @@ const Card = () => {
                   --------- OR ---------
                 </div>
                 <div className="flex justify-center">
-                  <button className="bg-red-500 text-white px-3 py-1 font-semibold rounded-md mt-3 cursor-pointer hover:bg-red-700 transition duration-500">
+                  <button
+                    className="bg-red-500 text-white px-3 py-1 font-semibold rounded-md mt-3 cursor-pointer hover:bg-red-700 transition duration-500"
+                    onClick={getLocation}
+                  >
                     Detect Location
                   </button>
                 </div>
+              </div>
+              <div className="bg-white border border-gray-100 rounded-md p-7 mt-4 space-y-2 shadow-xl h-max">
+                <h1 className="text-gray-800 font-bold text-xl">
+                  Bill Details
+                </h1>
+                <div className="flex justify-between items-center">
+                  <h1 className="flex gap-1 text-gray-700 items-center">
+                    <span>
+                      <LuNotebookText />
+                    </span>
+                    Items total
+                  </h1>
+                  <p>${totalPrice}</p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <h1 className="flex gap-1 text-gray-700 items-center">
+                    <span>
+                      <TbTruckDelivery />
+                    </span>
+                    Delivery Charges
+                  </h1>
+                  <p className="text-red-500 font-semibold ">
+                    <span className="text-gray-600 line-through">$25</span> FREE
+                  </p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <h1 className="flex gap-1 text-gray-700 items-center">
+                    <span>
+                      <GiShoppingBag />
+                    </span>
+                    Handling Charges
+                  </h1>
+                  <p className="text-red-700 font-semibold ">$5</p>
+                </div>
+                <hr className="text-gray-200 mt-2" />
+                <div className="justify-between flex items-center mt-1">
+                  <h1 className="flex gap-1 text-gray-700 items-center text-lg font-semibold">
+                    <span>
+                      <GiTakeMyMoney />
+                    </span>
+                    Grand Total
+                  </h1>
+                  <p className="font-semibold texxt-lg">${totalPrice + 5}</p>
+                </div>
+                <div>
+                  <h1 className="font-semibold text-gray-700 mb-3 mt-7">
+                    Apply PromoCode
+                  </h1>
+                  <div className="flex gap-3 items-center">
+                    <input
+                      type="text"
+                      placeholder="Enter Code.."
+                      className="p-2 pl-3 rounded-full w-full"
+                    />
+                    <button className="bg-white text-black px-3 py-1 font-semibold rounded-md  cursor-pointer border-2 border-gray-200 hover:bg-gray-300 transition duration-500">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+                <button className="bg-red-500 text-white px-3 py-1 font-semibold rounded-md mt-3 w-full cursor-pointer hover:bg-red-700 transition duration-500">
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
