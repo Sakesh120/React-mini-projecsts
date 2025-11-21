@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getData } from "../context/DataContext";
 import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import Loading from "../assets/Loading4.webm";
 import Lottie from "lottie-react";
 import notfound from "../assets/notfound.json";
+import { TiArrowBack } from "react-icons/ti";
 
 const CategoryProduct = () => {
   const params = useParams();
@@ -13,6 +14,7 @@ const CategoryProduct = () => {
   const { data, fetchAllProducts } = getData();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllProducts();
@@ -34,6 +36,17 @@ const CategoryProduct = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 mb-10">
+      <div className="flex justify-start items-center">
+        <button
+          onClick={() => navigate("/")}
+          className="w-fit px-3 py-2 bg-black text-white font-semibold mt-5 rounded-xl shadow-lg cursor-pointer flex items-center  mb-2 gap-1"
+        >
+          <span>
+            <TiArrowBack />
+          </span>
+          Back
+        </button>
+      </div>
       {data?.length > 0 ? (
         <div className="w-full">
           {/* Header Section */}
