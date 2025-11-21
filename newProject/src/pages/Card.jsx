@@ -5,9 +5,12 @@ import { LuNotebookText } from "react-icons/lu";
 import { TbTruckDelivery } from "react-icons/tb";
 import { GiShoppingBag, GiTakeMyMoney } from "react-icons/gi";
 import { useUser } from "@clerk/clerk-react";
+import Lottie from "lottie-react";
+import notfound from "../assets/notfound.json";
+import { Link } from "react-router-dom";
 
 const Card = ({ location, getLocation }) => {
-  const { cartItem, updateQauntity } = useCart();
+  const { cartItem, updateQauntity, deleteItem } = useCart();
   const { user } = useUser();
   console.log(location);
 
@@ -58,7 +61,10 @@ const Card = ({ location, getLocation }) => {
                       </button>
                     </div>
                     <span className="hover:bg-white transition-all rounded-full p-3 hover:shadow-2xl ">
-                      <MdDeleteOutline className="text-red-500 text-2xl cursor-pointer" />
+                      <MdDeleteOutline
+                        className="text-red-500 text-2xl cursor-pointer"
+                        onClick={() => deleteItem(item.id)}
+                      />
                     </span>
                   </div>
                 );
@@ -211,7 +217,19 @@ const Card = ({ location, getLocation }) => {
           </div>
         </div>
       ) : (
-        <div className="text-2xl">Cart is empty</div>
+        <div className="flex justify-center gap-20 items-center md:h-[600px] w-[900px] mt-10">
+          <Lottie animationData={notfound} classID="w-[500px]" />
+          <div className="flex flex-col gap-10">
+            <h1 className="text-red-600 text-2xl font-bold">
+              Ohh No ! Your Cart is Empty
+            </h1>
+            <Link to={"/products"}>
+              <button className="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition duration-300 cursor-pointer">
+                Start shopping
+              </button>
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );
