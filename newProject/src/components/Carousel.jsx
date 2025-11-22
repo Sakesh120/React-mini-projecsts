@@ -88,7 +88,7 @@ const Carousel = () => {
               key={index}
               className="bg-linear-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10  w-screen"
             >
-              <div className="flex gap-8 md:gap-15 justify-center h-[600px] w-full items-center px-4">
+              <div className="flex md:flex-row flex-col gap-8 md:gap-15 justify-center h-[600px] w-full items-center px-4">
                 <div className="space-y-6">
                   <h3 className="text-red-500 font-semibold text-sm">
                     One Of the best Choice in {item.category}

@@ -12,17 +12,20 @@ import {
 } from "@clerk/clerk-react";
 import { CgClose } from "react-icons/cg";
 import { useCart } from "../context/CartContext";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { GiCrossMark } from "react-icons/gi";
+import ReasponsiveMenu from "./ReasponsiveMenu";
 
 const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
   const { cartItem } = useCart();
+  const [openNav, setOpenNav] = useState(false);
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
-  console.log(location);
 
   return (
-    <div className="bg-white py-3 shadow-2xl ">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
+    <div className="bg-white py-3 shadow-2xl px-4 md:px-1 ">
+      <div className="max-w-6xl mx-auto flex justify-between items-center ">
         {/* logo section */}
         <div className="flex gap-7 items-center">
           <Link to={"/"}>
@@ -30,7 +33,7 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
               <span className="text-red-500 font-serif ">Z</span>aptro
             </h1>
           </Link>
-          <div className="flex gap-1 cursor-pointer text-gray-700 items-center">
+          <div className="md:flex gap-1 cursor-pointer text-gray-700 items-center hidden">
             <MapPin className="text-red-500" />
             <span className="font-semibold ">
               {location ? (
@@ -63,7 +66,7 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
         </div>
         {/* menu section */}
         <nav className="flex gap-7 items-center">
-          <ul className="flex gap-7 items-center text-xl font-semibold *:cursor-pointer*:transition-[5s] ">
+          <ul className="md:flex gap-7  items-center text-xl font-semibold *:cursor-pointer*:transition-[5s] hidden">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -119,7 +122,8 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
               {cartItem.length}
             </span>
           </Link>
-          <div className="">
+
+          <div className="md:block hidden">
             <SignedOut>
               <SignInButton className="cursor-pointer bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-800 transition-[3s]" />
             </SignedOut>
@@ -127,8 +131,20 @@ const Navbar = ({ location, getLocation, setOpenDropdown, openDropdown }) => {
               <UserButton />
             </SignedIn>
           </div>
+          {openNav ? (
+            <GiCrossMark
+              onClick={() => setOpenNav(false)}
+              className="w-20 h-5 cursor-pointer md:hidden"
+            />
+          ) : (
+            <FaBarsStaggered
+              onClick={() => setOpenNav(true)}
+              className="w-20 h-5 cursor-pointer md:hidden"
+            />
+          )}
         </nav>
       </div>
+      <ReasponsiveMenu openNav={openNav} setOpenNav={setOpenNav} />
     </div>
   );
 };
