@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const ReasponsiveMenu = ({ openNav, setOpenNav }) => {
   const { user } = useUser();
+
   return (
     <div
       className={`${
@@ -14,57 +15,64 @@ const ReasponsiveMenu = ({ openNav, setOpenNav }) => {
       <div>
         <div className="flex items-center justify-start gap-3">
           {user ? <UserButton size={50} /> : <FaUserCircle size={50} />}
+          <h1 className="text-md font-semibold text-gray-800">
+            {user ? user.fullName : ""}
+            <br />
+            <p className="text-[12px] text-[#bec70d]">Premium user</p>
+          </h1>
         </div>
-        <ul className="flex gap-5 items-start text-xl font-semibold *:cursor-pointer*:transition-[5s] flex-col mt-15 ">
-          <NavLink
-            to={"/"}
-            className={({ isActive }) =>
-              `${
-                isActive
-                  ? "border-b-3 transition-all border-red-500 text-gray-700"
-                  : "text-black"
-              } cursor-pointer`
-            }
-          >
-            <li>Home</li>
-          </NavLink>
-          <NavLink
-            to={"/products"}
-            className={({ isActive }) =>
-              `${
-                isActive
-                  ? "border-b-3 transition-all border-red-500 text-gray-700"
-                  : "text-black"
-              } cursor-pointer`
-            }
-          >
-            <li>Products</li>
-          </NavLink>
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) =>
-              `${
-                isActive
-                  ? "border-b-3 transition-all border-red-500 text-gray-700"
-                  : "text-black"
-              } cursor-pointer`
-            }
-          >
-            <li>About</li>
-          </NavLink>
-          <NavLink
-            to={"/contact"}
-            className={({ isActive }) =>
-              `${
-                isActive
-                  ? "border-b-3 transition-all border-red-500 text-gray-700"
-                  : "text-black"
-              } cursor-pointer`
-            }
-          >
-            <li>Contact</li>
-          </NavLink>
-        </ul>
+        <nav className=" mt-12">
+          <ul className="flex gap-5 items-start text-xl font-semibold *:cursor-pointer *:transition-[5s] flex-col ">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-b-3 transition-all border-red-500 text-gray-700"
+                    : "text-black"
+                } cursor-pointer`
+              }
+            >
+              <li onClick={() => setOpenNav(false)}>Home</li>
+            </NavLink>
+            <NavLink
+              to={"/products"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-b-3 transition-all border-red-500 text-gray-700"
+                    : "text-black"
+                } cursor-pointer`
+              }
+            >
+              <li onClick={() => setOpenNav(false)}>Products</li>
+            </NavLink>
+            <NavLink
+              to={"/about"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-b-3 transition-all border-red-500 text-gray-700"
+                    : "text-black"
+                } cursor-pointer`
+              }
+            >
+              <li onClick={() => setOpenNav(false)}>About</li>
+            </NavLink>
+            <NavLink
+              to={"/contact"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-b-3 transition-all border-red-500 text-gray-700"
+                    : "text-black"
+                } cursor-pointer`
+              }
+            >
+              <li onClick={() => setOpenNav(false)}>Contact</li>
+            </NavLink>
+          </ul>
+        </nav>
       </div>
     </div>
   );

@@ -88,7 +88,7 @@ const Carousel = () => {
               key={index}
               className="bg-linear-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10  w-screen"
             >
-              <div className="flex md:flex-row flex-col gap-8 md:gap-15 justify-center h-[600px] w-full items-center px-4">
+              <div className="flex md:flex-row flex-col gap-8 md:gap-15 justify-center md:h-[600px] w-full items-center px-4 h-[700px] ">
                 <div className="space-y-6">
                   <h3 className="text-red-500 font-semibold text-sm">
                     One Of the best Choice in {item.category}
@@ -106,7 +106,7 @@ const Carousel = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className=" md:mw-[450px] md:h-[450px] mw-[350px]  h-[350px] hover:scale-105 transition-all "
+                  className=" md:w-[450px] md:h-[450px] max-w-[350px]  max-h-[350px] hover:scale-105 transition-all "
                 />
               </div>
             </div>

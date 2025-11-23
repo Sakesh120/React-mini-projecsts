@@ -52,7 +52,6 @@ const About = () => {
             something cool and functional- Zaptro has something for everyone
           </p>
           <Link to={"/products"}>
-            {" "}
             <button className="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition duration-300">
               Start shopping
             </button>
