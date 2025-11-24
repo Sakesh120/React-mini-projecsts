@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import Lottie from "lottie-react";
 import notfound from "../assets/notfound.json";
+import MobileFilter from "../components/MobileFilter";
 
 const Product = () => {
   const { data, fetchAllProducts } = getData();
@@ -13,6 +14,7 @@ const Product = () => {
   const [category, setCategory] = useState("All");
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [page, setPage] = useState(1);
+  const [openFilter, setOpenFilter] = useState(false);
 
   useEffect(() => {
     fetchAllProducts();
@@ -26,6 +28,7 @@ const Product = () => {
 
   const pageHandler = (selectedPage) => {
     setPage(selectedPage);
+    window.scrollTo(0, 0);
   };
 
   const filterData = data?.filter((item) => {
@@ -46,9 +49,20 @@ const Product = () => {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto px-4 mb-10">
+      <div className="max-w-6xl mx-auto px-4 mb-10 ">
+        <MobileFilter
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
+          search={search}
+          setSearch={setSearch}
+          category={category}
+          setCategory={setCategory}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          handleCategoryChange={handleCategoryChange}
+        />
         {data?.length > 0 ? (
-          <div className="flex gap-8">
+          <div className="flex gap-8 ">
             <FilterSection
               search={search}
               setSearch={setSearch}
@@ -60,7 +74,7 @@ const Product = () => {
             />
             {filterData?.length > 0 ? (
               <div className="flex flex-col justify-center items-center">
-                <div className="grid grid-cols-4 gap-7 mt-10 ">
+                <div className="grid md:grid-cols-4 grid-cols-2 md:gap-7 gap-5 md:mt-10 mt-10 ">
                   {filterData
                     ?.slice(page * 8 - 8, page * 8)
                     .map((product, index) => {

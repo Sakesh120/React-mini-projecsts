@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { DataProvider } from "./context/DataContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { ToastContainer } from "react-toastify";
+import ScrollToTop from "react-scroll-to-top";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -20,6 +21,19 @@ createRoot(document.getElementById("root")).render(
       <CartProvider>
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
           <App />
+          <ScrollToTop
+            smooth
+            style={{
+              backgroundColor: "#fa2d37",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#fff",
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+            }}
+          />
           <ToastContainer
             position="bottom-right"
             autoClose={5000}

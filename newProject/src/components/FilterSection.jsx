@@ -13,7 +13,7 @@ const FilterSection = ({
   const { categoryOnlyData } = getData();
 
   return (
-    <div className="bg-gray-50 mt-10 rounded-md h-max ">
+    <div className="bg-gray-50 mt-10 rounded-md h-max md:block hidden">
       <input
         type="text"
         placeholder="Search..."

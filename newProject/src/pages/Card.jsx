@@ -16,9 +16,9 @@ const Card = ({ location, getLocation }) => {
 
   const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
   return (
-    <div className="mt-10 max-w-6xl mx-auto mb-5 ">
+    <div className="mt-10 max-w-6xl mx-auto mb-5 px-0">
       {cartItem.length > 0 ? (
-        <div className="">
+        <div className="md:mx-0 mx-4">
           <h1 className="font-bold text-2xl">My Cart ({cartItem.length})</h1>
           <div>
             <div className="mt-10">
@@ -26,7 +26,7 @@ const Card = ({ location, getLocation }) => {
                 return (
                   <div
                     key={index}
-                    className="bg-gray-100 p-5 rounded-md items-center justify-between mt-3 w-ful flex "
+                    className="bg-gray-100 p-5 rounded-md items-center justify-between mt-3 w-full flex "
                   >
                     <div className="flex gap-4">
                       <img
@@ -35,13 +35,34 @@ const Card = ({ location, getLocation }) => {
                         className="w-[120px] h-[120px] shadow-lg shadow-gray-300 p-2 bg-white rounded-2xl "
                       />
                       <div>
-                        <h1 className="w-[300px] line-clamp-2">{item.title}</h1>
-                        <p className="text-red-500 font-semibold text-lg">
+                        <h1 className="md:w-[300px] w-[200px] line-clamp-2">
+                          {item.title}
+                        </h1>
+                        <p className="text-red-500 font-semibold text-md md:text-lg">
                           ${item.price}
                         </p>
+                        <div className="bg-red-500 text-white flex md:hidden gap-4 md:p-2 p-0 mt-1 md:mt-0 rounded-md font-bold md:text-xl text-lg justify-around items-center md:w-[7vw] w-[100px] ">
+                          <button
+                            className="cursor-pointer "
+                            onClick={() =>
+                              updateQauntity(cartItem, item.id, "decrease")
+                            }
+                          >
+                            -
+                          </button>
+                          <span>{item.quantity}</span>
+                          <button
+                            className="cursor-pointer "
+                            onClick={() =>
+                              updateQauntity(cartItem, item.id, "increase")
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="bg-red-500 text-white flex gap-4 p-2 rounded-md font-bold text-xl justify-around items-center w-[7vw]">
+                    <div className="bg-red-500 text-white md:flex hidden gap-4 p-2 rounded-md font-bold text-xl justify-around items-center w-[7vw]">
                       <button
                         className="cursor-pointer "
                         onClick={() =>
@@ -70,7 +91,7 @@ const Card = ({ location, getLocation }) => {
                 );
               })}
             </div>
-            <div className="grid grid-cols-2 gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
               <div className="bg-gray-100 rounded-md p-7 mt-4 space-y-2 ">
                 <h1 className="text-gray-800 font-bold text-xl ">
                   Delivery Info
@@ -110,7 +131,7 @@ const Card = ({ location, getLocation }) => {
                       maxLength={6}
                       minLength={6}
                       placeholder="Code"
-                      className="p-2 rounded-md "
+                      className="p-2 rounded-md md:w-auto w-full"
                       value={location ? location.postcode : ""}
                     />
                   </div>
@@ -132,7 +153,7 @@ const Card = ({ location, getLocation }) => {
                       maxLength={10}
                       minLength={10}
                       placeholder="contact number"
-                      className="p-2 rounded-md "
+                      className="p-2 rounded-md md:w-auto w-full  "
                     />
                   </div>
                 </div>
@@ -217,9 +238,9 @@ const Card = ({ location, getLocation }) => {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center gap-20 items-center md:h-[600px] w-[900px] mt-10">
-          <Lottie animationData={notfound} classID="w-[500px]" />
-          <div className="flex flex-col gap-10">
+        <div className="flex md:flex-row flex-col justify-center md:gap-20 items-center md:h-[600px] w-screen mt-10">
+          <Lottie animationData={notfound} classID="md:w-[500px] w-[200px] " />
+          <div className="flex flex-col md:gap-10 gap-5">
             <h1 className="text-red-600 text-2xl font-bold">
               Ohh No ! Your Cart is Empty
             </h1>

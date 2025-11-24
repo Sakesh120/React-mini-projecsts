@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="min-h-screen bg-linear-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center px-4 py-10">
       <div className="backdrop-blur-md  bg-white/10 border-white/20 rounded-2xl p-10 w-full max-w-5xl">
         <h2 className="text-4xl font-bold text-white text-center mb-10">
-          Get in Touch with <span className="text-red-400">Zaptro</span>
+          Get in Touch with <span className="text-red-400">Sansktrity</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* info section */}
@@ -22,7 +22,7 @@ const Contact = () => {
                 <strong>📍 Address:</strong> 123 Tech Lane, Sakoli, India
               </p>
               <p>
-                <strong>📩 Email:</strong> support@zaptro.com
+                <strong>📩 Email:</strong> support@Sansktrity.com
               </p>
               <p>
                 <strong>📞 phone:</strong> +91 83297 36754

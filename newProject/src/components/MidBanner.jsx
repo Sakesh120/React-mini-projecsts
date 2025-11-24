@@ -3,9 +3,9 @@ import banner from "../assets/banner1.jpg";
 
 const MidBanner = () => {
   return (
-    <div className="bg-gray-100 md:py-24">
+    <div className="bg-gray-100 md:py-2">
       <div
-        className="relative max-w-7xl mx-auto md:rounded-2xl pt-28 bg-cover bg-center h-[550px] md:h-[600px] "
+        className="relative max-w-7xl mx-auto md:rounded-2xl pt-28 bg-cover bg-center h-[550px] md:h-[600px]"
         style={{
           backgroundImage: `url(${banner})`,
           backgroundPosition: "center",

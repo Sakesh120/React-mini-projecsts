@@ -1,4 +1,4 @@
-import { UserButton, useUser } from "@clerk/clerk-react";
+import { SignIn, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -16,7 +16,13 @@ const ReasponsiveMenu = ({ openNav, setOpenNav }) => {
         <div className="flex items-center justify-start gap-3">
           {user ? <UserButton size={50} /> : <FaUserCircle size={50} />}
           <h1 className="text-md font-semibold text-gray-800">
-            {user ? user.fullName : ""}
+            {user ? (
+              user.fullName
+            ) : (
+              <SignInButton className="cursor-pointer bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-800 transition-[3s]">
+                Sign In
+              </SignInButton>
+            )}
             <br />
             <p className="text-[12px] text-[#bec70d]">Premium user</p>
           </h1>
