@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       <p className="my-1 text-lg text-gray-800 font-bold">${product.price}</p>
       <button
         onClick={() => addToCart(product)}
-        className="bg-red-500 hover:bg-red-700 px-3 py-2 text-lg rounded-md flex text-white gap-1 cursor-pointer w-full items-center justify-center font-semibold"
+        className="bg-red-500 hover:bg-red-700 px-3 py-2 md:text-lg text-[15px] rounded-md flex text-white gap-1 cursor-pointer w-full items-center justify-center font-semibold"
       >
         <SlBasket className="w-6 h-6" /> Add to Card
       </button>

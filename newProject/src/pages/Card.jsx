@@ -114,7 +114,7 @@ const Card = ({ location, getLocation }) => {
                     value={location ? location.county : ""}
                   />
                 </div>
-                <div className="flex w-full space-y-1 gap-2">
+                <div className="flex w-full md:flex-row flex-col space-y-1 gap-2">
                   <div className="flex flex-col space-y-1 w-full">
                     <label htmlFor="">State</label>
                     <input
@@ -131,12 +131,12 @@ const Card = ({ location, getLocation }) => {
                       maxLength={6}
                       minLength={6}
                       placeholder="Code"
-                      className="p-2 rounded-md md:w-auto w-full"
+                      className="p-2 rounded-md md:w-auto w-[50%]"
                       value={location ? location.postcode : ""}
                     />
                   </div>
                 </div>
-                <div className="flex w-full space-y-1 gap-2">
+                <div className="flex w-full md:flex-row flex-col space-y-1 gap-2">
                   <div className="flex flex-col space-y-1 w-full">
                     <label htmlFor="">Country</label>
                     <input
@@ -230,7 +230,10 @@ const Card = ({ location, getLocation }) => {
                     </button>
                   </div>
                 </div>
-                <button className="bg-red-500 text-white px-3 py-1 font-semibold rounded-md mt-3 w-full cursor-pointer hover:bg-red-700 transition duration-500">
+                <button
+                  onClick={() => alert("🎉Congratulation Order is Placed")}
+                  className="bg-red-500 text-white px-3 py-1 font-semibold rounded-md mt-3 w-full cursor-pointer hover:bg-red-700 transition duration-500"
+                >
                   Proceed to Checkout
                 </button>
               </div>

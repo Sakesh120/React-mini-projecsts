@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <Link to="/">
-            <h1 className="text-red-500 text-2xl font-bold">Zaptro</h1>
+            <h1 className="text-red-500 text-2xl font-bold">Sansktrity</h1>
           </Link>
           <p className="mt-2 text-sm">
             Powering Your World with the Best in Electronics.
@@ -21,7 +21,7 @@ const Footer = () => {
           <p className="mt-2 text-sm">
             123 Electronics St, Style City, NY 10001
           </p>
-          <p className="text-sm">Email: support@Zaptro.com</p>
+          <p className="text-sm">Email: support@Sansktrity.com</p>
           <p className="text-sm">Phone: (123) 456-7890</p>
         </div>
         {/* customer service link */}
@@ -40,6 +40,7 @@ const Footer = () => {
           <h3 className="text-xl font-semibold">Follow Us</h3>
           <div className="flex space-x-4 mt-2 *:cursor-pointer">
             <FaFacebook />
+
             <FaInstagram />
             <FaTwitterSquare />
             <FaPinterest />
@@ -70,7 +71,7 @@ const Footer = () => {
       <div className="mt-8 border-t border-gray-700 pt-6 text-center text-sm">
         <p>
           &copy; {new Date().getFullYear()}{" "}
-          <span className="text-red-500">Zaptro</span>. All rights reserved
+          <span className="text-red-500">Sansktrity</span>. All rights reserved
         </p>
       </div>
     </footer>

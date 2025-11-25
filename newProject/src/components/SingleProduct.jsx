@@ -5,6 +5,7 @@ import Loading from "../assets/Loading4.webm";
 import Breadcrums from "./Breadcrums";
 import { SlBasket } from "react-icons/sl";
 import { useCart } from "../context/CartContext";
+import { TiArrowBack } from "react-icons/ti";
 
 const SingleProduct = () => {
   const params = useParams();
@@ -29,6 +30,17 @@ const SingleProduct = () => {
     <>
       {singleProduct ? (
         <div className="px-4 pb-4 md:px-0">
+          <div className="flex justify-start items-center md:ml-45">
+            <button
+              onClick={() => navigate("/")}
+              className="w-fit px-3 py-2 bg-black text-white font-semibold mt-5 rounded-xl shadow-lg cursor-pointer flex items-center  mb-2 gap-1"
+            >
+              <span>
+                <TiArrowBack />
+              </span>
+              Back
+            </button>
+          </div>
           <Breadcrums title={singleProduct.title} />
           <div className="max-w-[700px] mx-auto md:p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* product image */}
