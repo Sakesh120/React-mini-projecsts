@@ -1,10 +1,20 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+
+import DashBoard from "./pages/DashBoard";
+import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello this is vite + React!</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<DashBoard />} />
+        <Route path="/DashBoard" element={<DashBoard />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
