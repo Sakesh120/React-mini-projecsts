@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./components/ui/button";
 import { Navigate, Outlet } from "react-router";
 import { useUser } from "@clerk/clerk-react";
+import Header from "./components/Header";
 const App = () => {
   const { user, isLoaded, isSignedIn } = useUser();
   if (!isSignedIn && isLoaded) {
@@ -11,6 +12,7 @@ const App = () => {
   }
   return (
     <>
+      <Header />
       <Outlet />
     </>
   );
