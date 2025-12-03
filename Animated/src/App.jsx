@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
-import Canvas from "./Canvas";
 import data from "./Data";
+import Canvas from "./Canvas";
+import LocomotiveScroll from "locomotive-scroll";
 
 const App = () => {
+  useEffect(() => {
+    const locomotiveScroll = new LocomotiveScroll();
+  });
   return (
     <>
-      <div className="w-full min-h-screen bg-black text-white">
-        {data.map((item, index) => {
-          <div key={index}>
-            {item.map((canvasData, index) => {
-              <Canvas key={index} details={canvasData} />;
-            })}
-          </div>;
+      <div className="w-full  min-h-screen text-black relative">
+        {data[0].map((canvasData, canvasIndex) => {
+          return <Canvas key={canvasIndex} details={canvasData} />;
         })}
       </div>
     </>
