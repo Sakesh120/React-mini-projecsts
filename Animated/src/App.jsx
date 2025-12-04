@@ -1,20 +1,58 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 import data from "./Data";
 import Canvas from "./Canvas";
 import LocomotiveScroll from "locomotive-scroll";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const App = () => {
+  const [showCanvas, setShowCanvas] = useState(false);
+  const headingRef = useRef(null);
+  const growingSpan = useRef(null);
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll();
-  });
+  }, []);
+
+  useGSAP(() => {
+    headingRef.current.addEventListener("click", (e) => {
+      setShowCanvas(!showCanvas);
+      if (!showCanvas) {
+        setShowCanvas(!showCanvas);
+        gsap.set(growingSpan.current, {
+          top: e.clientY,
+          left: e.clientX,
+        });
+
+        gsap.to(growingSpan.current, {
+          scale: 1000,
+          ease: "power4.inOut",
+        });
+      } else {
+        gsap.to(growingSpan.current, {
+          scale: 0,
+          duration: 1,
+          ease: "power4.in",
+        });
+        gsap.to("body", {
+          backgroundColor: "#d9c9c9",
+        });
+      }
+    });
+  }, [showCanvas]);
   return (
     <>
-      <div className="w-full  min-h-screen text-black relative">
-        {/* {data[0].map((canvasData, canvasIndex) => {
-          return <Canvas key={canvasIndex} details={canvasData} />;
-        })} */}
-        <div className="w-full h-screen text-white">
+      <span
+        ref={growingSpan}
+        className="growing block fixed top-[-10%] left-[-10%] w-5 h-5 rounded-full "
+      ></span>
+      <div className="w-full  min-h-screen relative">
+        {showCanvas &&
+          data[0].map((canvasData, canvasIndex) => {
+            return <Canvas key={canvasIndex} details={canvasData} />;
+          })}
+
+        <div className="w-full z-1 h-screen  relative">
           <nav className=" top-0 left-0 w-full p-6 px-10 flex justify-between items-center z-50 ">
             <div className="text-2xl font-semibold ">Thirtysixstudio</div>
             <div className="links flex gap-10 items-center">
@@ -30,7 +68,7 @@ const App = () => {
             </div>
           </nav>
           <div className="textContainer w-full px-[20%]">
-            <div className="text text-white w-[40%]">
+            <div className="text  w-[40%]">
               <h3 className="text-3xl leading-[1.4] ">
                 At Thirtysixstudio, we build digital assets and immersive
                 experiences for purposeful brands.
@@ -42,6 +80,45 @@ const App = () => {
               </p>
               <p className="mt-10">Scroll</p>
             </div>
+          </div>
+          <div className="w-full absolute mt-50  left-0 pl-5">
+            <h1
+              ref={headingRef}
+              className="text-[13rem] font-normal tracking-tight  leading-none z-99"
+            >
+              Thirtysixstudio
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full relative h-screen py-10">
+        {showCanvas &&
+          data[1].map((canvasData, canvasIndex) => {
+            return <Canvas key={canvasIndex} details={canvasData} />;
+          })}
+        <div className="textContainer mt-30 w-full px-[20%] flex justify-between">
+          <div className="w-[50%]">
+            <h1 className=" text-xl ml-5">01 --- WHAT WE DO</h1>
+            <img
+              src="https://pngimg.com/uploads/iphone16/iphone16_PNG27.png"
+              alt=""
+            />
+          </div>
+          <div className="text w-[40%]">
+            <h3 className="text-3xl leading-[1.4] ">
+              We aim to elevate digital production in the advertising space,
+              bringing your ideas to life.
+            </h3>
+            <p className="text-[15px] mt-20 leading-[1.3] font-normal">
+              As a contemporary studio, we use cutting-edge design practices and
+              the latest technologies to deliver current digital work.
+            </p>
+            <p className="text-[15px] mt-5 leading-[1.3] font-normal">
+              Our commitment to innovation and simplicity, paired with our agile
+              approach, ensures your journey with us is smooth and enjoyable
+              from start to finish.
+            </p>
           </div>
         </div>
       </div>

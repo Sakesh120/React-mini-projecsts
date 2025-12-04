@@ -2,6 +2,15 @@
 @import "tailwindcss";
 body {
   /* background-color: #a10d0a; */
-  background-color: #000;
+  background-color: #d9c9c9;
   font-family: "Martel Sans", sans-serif;
+  color: #000;
+  transition: 1s;
+}
+convas {
+  pointer-events: none;
+}
+
+span.growing {
+  background-color: #a10d0a;
 }
