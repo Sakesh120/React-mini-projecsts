@@ -2,7 +2,7 @@
 @import "tailwindcss";
 body {
   /* background-color: #a10d0a; */
-  background-color: #d9c9c9;
+  background-color: #fcffff;
   font-family: "Martel Sans", sans-serif;
   color: #000;
   transition: 1s;
@@ -12,5 +12,5 @@ convas {
 }
 
 span.growing {
-  background-color: #a10d0a;
+  background-color: #fb1914;
 }

@@ -26,16 +26,23 @@ const App = () => {
 
         gsap.to(growingSpan.current, {
           scale: 1000,
+          duration: 1.5,
           ease: "power4.inOut",
+        });
+        gsap.to(".paraBorder", {
+          borderBottomColor: "gray",
         });
       } else {
         gsap.to(growingSpan.current, {
           scale: 0,
-          duration: 1,
+          duration: 2,
           ease: "power4.in",
         });
         gsap.to("body", {
-          backgroundColor: "#d9c9c9",
+          backgroundColor: "#fcffff",
+        });
+        gsap.to(".paraBorder", {
+          borderBottomColor: "#ebe6e7",
         });
       }
     });
@@ -92,7 +99,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="w-full relative h-screen py-10">
+      <div className="w-full paraBorder relative h-screen py-10 border-b border-gray-200">
         {showCanvas &&
           data[1].map((canvasData, canvasIndex) => {
             return <Canvas key={canvasIndex} details={canvasData} />;
@@ -119,6 +126,48 @@ const App = () => {
               approach, ensures your journey with us is smooth and enjoyable
               from start to finish.
             </p>
+          </div>
+        </div>
+      </div>
+      <div className="paraBorder w-full  min-h-screen relative border-b border-gray-200">
+        {showCanvas &&
+          data[2].map((canvasData, canvasIndex) => {
+            return <Canvas key={canvasIndex} details={canvasData} />;
+          })}
+        <div className="textContainer mt-50 w-full px-[20%] ">
+          <div className="w-full">
+            <p className=" text-sm font-bold mt-0">OUR SERVICES</p>
+            <h1 className="text-3xl leading-[1.4] mt-30">
+              We provide you with captivating design, interactive animations,
+              reliable code, and immaculate project coordination. Whether you
+              need acampaign built froms cratchor assistance at a specific
+              phase, we’ve got you covered.
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div className="w-full  min-h-screen relative">
+        {showCanvas &&
+          data[3].map((canvasData, canvasIndex) => {
+            return <Canvas key={canvasIndex} details={canvasData} />;
+          })}
+        <div className="textContainer mt-30 w-full px-[20%] ">
+          <div className="links flex py-4 flex-col w-full">
+            {[
+              "CREATIVE",
+              "DESIGN",
+              "ANIMATION",
+              "TECHNOLOGY",
+              "PROJECT DELIVERY",
+              "EXAMPLE PRODUCTS",
+            ].map((lable, index) => (
+              <div className="w-full flex justify-between border-b py-2 items-center px-4 text-lg h-20">
+                <h3>{lable}</h3>
+                <p className=" paraBorder px-4 rounded-4xl border border-gray-300 hover:border-gray-500 cursor-pointer flex justify-center items-center transition-[3s]">
+                  +
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
